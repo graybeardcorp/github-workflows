@@ -57,7 +57,7 @@ jobs:
         # Clone infrastructure-catalog for packer templates
         echo "Cloning infrastructure-catalog..."
         curl -sL -H "Authorization: token ${GH_TOKEN}" \
-          "https://api.github.com/repos/kevlarcon/infrastructure-catalog/tarball/main" \
+          "https://api.github.com/repos/graybeardcorp/infrastructure-catalog/tarball/main" \
           -o /tmp/infrastructure-catalog.tar.gz
 
         mkdir -p /opt/infrastructure-catalog
@@ -85,7 +85,7 @@ jobs:
         TOKEN: ${{ secrets.gh_private_repo_token }}
 
     - name: Install kevcons
-      uses: kevlarcon/github-workflows/actions/install-kevcons@main
+      uses: graybeardcorp/github-workflows/actions/install-kevcons@main
       with:
         github-token: ${{ secrets.gh_private_repo_token }}
 
