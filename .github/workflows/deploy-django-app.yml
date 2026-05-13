@@ -48,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/kevlarcon/${{ inputs.app_name }}
+          images: ghcr.io/graybeardcorp/${{ inputs.app_name }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -91,7 +91,7 @@ jobs:
           export KUBECONFIG=/tmp/kubeconfig
 
           # Clone infrastructure-catalog to get the chart
-          git clone https://github.com/kevlarcon/infrastructure-catalog.git /tmp/infrastructure-catalog
+          git clone https://github.com/graybeardcorp/infrastructure-catalog.git /tmp/infrastructure-catalog
 
           helm upgrade --install ${{ inputs.app_name }} \
             /tmp/infrastructure-catalog/charts/django-app \
@@ -100,7 +100,7 @@ jobs:
             --set app.name=${{ inputs.app_name }} \
             --set app.namespace=${{ inputs.app_name }} \
             --set app.baseDomain=${{ inputs.domain }} \
-            --set image.repository=ghcr.io/kevlarcon/${{ inputs.app_name }} \
+            --set image.repository=ghcr.io/graybeardcorp/${{ inputs.app_name }} \
             --set image.tag=${{ github.sha }} \
             --wait \
             --timeout 10m

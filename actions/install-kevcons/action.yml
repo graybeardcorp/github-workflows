@@ -27,7 +27,7 @@ runs:
 
         # Use GitHub CLI to get the commit SHA (it handles auth automatically)
         SHA=$(curl -s -H "Authorization: token ${GH_TOKEN}" \
-          "https://api.github.com/repos/kevlarcon/kevcons/commits/${{ inputs.kevcons-ref }}" | \
+          "https://api.github.com/repos/graybeardcorp/kevcons/commits/${{ inputs.kevcons-ref }}" | \
           jq -r '.sha')
 
         if [ -z "$SHA" ] || [ "$SHA" = "null" ]; then
@@ -63,7 +63,7 @@ runs:
 
         # Download source as tarball using API (avoids git auth complexity)
         curl -sL -H "Authorization: token ${GH_TOKEN}" \
-          "https://api.github.com/repos/kevlarcon/kevcons/tarball/${{ inputs.kevcons-ref }}" \
+          "https://api.github.com/repos/graybeardcorp/kevcons/tarball/${{ inputs.kevcons-ref }}" \
           -o /tmp/kevcons.tar.gz
 
         # Extract and find the directory

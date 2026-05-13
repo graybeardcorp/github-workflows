@@ -48,7 +48,7 @@ jobs:
         role-session-name: github-actions-asg-deploy
 
     - name: Install kevcons
-      uses: kevlarcon/github-workflows/actions/install-kevcons@main
+      uses: graybeardcorp/github-workflows/actions/install-kevcons@main
       with:
         github-token: ${{ secrets.gh_private_repo_token }}
 
